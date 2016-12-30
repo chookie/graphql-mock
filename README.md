@@ -1,6 +1,6 @@
 # GraphQL Mocking
 
-Playing with Apollo graphql tools for mocking out a GraphQL service to facilitate consumer driven design.  The workflows would be:
+Playing with Apollo graphql tools for mocking out a GraphQL service to facilitate consumer driven design.  The workflow would be:
 * Create the schema using the a simple Apollo string template.
 * Return mock data so consumers can play with the API to see if it does what they need.
 * Iterate through modifying, using the API until it is right.
