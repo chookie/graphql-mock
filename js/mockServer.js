@@ -30,21 +30,29 @@ app.use('/mock', GraphQLHTTP({
     graphiql: true
 }));
 
+// Connect to database before starting server
+let db;
+MongoClient.connect(projectConfig.mongo, (err, database) => {
+  if (err) {
+    throw err;
+  }
 
-const realSchema = makeExecutableSchema({
-  typeDefs: schemaString,
-  resolvers: resolverMap
-});
+  db = database;
+  const realSchema = makeExecutableSchema({
+    typeDefs: schemaString,
+    resolvers: resolverMap(db)
+  });
 
-app.use('/graphql', GraphQLHTTP({
-    schema: realSchema,
-    graphiql: true
-}));
+  app.use('/graphql', GraphQLHTTP({
+      schema: realSchema,
+      graphiql: true
+  }));
 
-app.listen(projectConfig.port, function (err) {
-    if (err) {
-        console.log(err);
-    } else {
-        console.log(`Server started at http://localhost:${projectConfig.port}`)
-    }
+  app.listen(projectConfig.port, function (err) {
+      if (err) {
+          console.log(err);
+      } else {
+          console.log(`Server started at http://localhost:${projectConfig.port}`)
+      }
+  });
 });

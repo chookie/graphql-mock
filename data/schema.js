@@ -3,7 +3,7 @@
 export default`
     # This is the description for Link type
     type Link {
-        id: Int! # ! means required
+        id: String! # ! means required
         # This is the description for title
         title: String
         url: String
