@@ -4,7 +4,7 @@
   "description": "My test of the Apollo graphql server tools for mocking",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./js/mockServer.js --exec babel-node",
+    "start": "nodemon ./js/server.js --exec babel-node",
     "exe": "babel-node ./js/inlineExeQuery.js",
     "strin": "babel-node ./js/inlineStringQuery.js"
   },
